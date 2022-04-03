@@ -9,7 +9,7 @@ const TodoTasks = ({ tasks, handleDelete }) => {
 				{tasks.map((item, index) => (
 					<div key={index} id="tasks">
 						<div className="task">
-							<div className="newTask">{item}</div>
+							<div className="newTask">{item.label}</div>
 							<div className="actions">
 								<button
 									className="delete"
