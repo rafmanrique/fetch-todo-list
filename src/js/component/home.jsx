@@ -97,12 +97,32 @@ const Home = () => {
 
 				body: JSON.stringify(newTasks),
 			});
-			let result = await response.json();
 			if (response.ok) {
 				setNewTask({ label: "", done: false });
 				getTodoList();
 			} else {
 				return;
+			}
+		} catch {
+			console.log(error);
+		}
+	}
+
+	// Eliminar lista completa (DELETE)
+
+	async function handleDeleteList() {
+		try {
+			let response = await fetch(`${URL_BASE}rafmanrique`, {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			if (response.ok) {
+				getTodoList();
+				setError(false);
+			} else {
+				console.log(response.status);
 			}
 		} catch {
 			console.log(error);
@@ -135,7 +155,11 @@ const Home = () => {
 				</form>
 			</header>
 			<main>
-				<TodoTasks tasks={tasks} handleDelete={handleDelete} />
+				<TodoTasks
+					tasks={tasks}
+					handleDelete={handleDelete}
+					handleDeleteList={handleDeleteList}
+				/>
 			</main>
 		</>
 	);

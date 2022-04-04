@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TodoTasks = ({ tasks, handleDelete }) => {
+const TodoTasks = ({ tasks, handleDelete, handleDeleteList }) => {
 	return (
 		<>
 			<section className="task-list">
@@ -20,6 +20,14 @@ const TodoTasks = ({ tasks, handleDelete }) => {
 						</div>
 					</div>
 				))}
+			</section>
+			<section className="erase-tasks">
+				<button
+					type="button"
+					id="new-task-submit"
+					onClick={handleDeleteList}>
+					Delete All Tasks
+				</button>
 			</section>
 		</>
 	);
